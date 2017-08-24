@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 2107913680
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9f6a627484908cd832d51c8cbfd3f7a1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e6a9e4149af2e9e0805fc21f5a860a6c
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameAssets/ui/Font/FZLTHJW.TTF
+Dependencies: []

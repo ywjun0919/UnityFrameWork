@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fwrok", "fwrok.csproj", "{9E7EB10A-8E84-EF42-0D68-0D97ACFBD6C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fwrok.Editor", "fwrok.Editor.csproj", "{EDBDE807-ADC3-E650-B9F5-683BD7663BAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E7EB10A-8E84-EF42-0D68-0D97ACFBD6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E7EB10A-8E84-EF42-0D68-0D97ACFBD6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E7EB10A-8E84-EF42-0D68-0D97ACFBD6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E7EB10A-8E84-EF42-0D68-0D97ACFBD6C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDBDE807-ADC3-E650-B9F5-683BD7663BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDBDE807-ADC3-E650-B9F5-683BD7663BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDBDE807-ADC3-E650-B9F5-683BD7663BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDBDE807-ADC3-E650-B9F5-683BD7663BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

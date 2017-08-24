@@ -1,0 +1,11 @@
+ManifestFileVersion: 0
+CRC: 2471532485
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ui/dlgtest.ui
+      Dependencies:
+        Dependency_0: ui/font/fzlthjw.ui
+    Info_1:
+      Name: ui/font/fzlthjw.ui
+      Dependencies: {}
