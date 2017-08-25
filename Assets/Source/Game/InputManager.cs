@@ -22,7 +22,15 @@ namespace Game
             }
             else if (Input.GetKey(KeyCode.O))
             {
-                Loader.LoadUI("ui/dlgtest.ui");
+                Loader.LoadUI("ui/dlgtest.ui",null);
+            }
+            else if(Input.GetKey(KeyCode.U))
+            {
+                GameMain.SetSprite("google");
+            }
+            else if(Input.GetKey(KeyCode.I))
+            {
+                GameMain.SetSprite("1_cjsen");
             }
         }
 

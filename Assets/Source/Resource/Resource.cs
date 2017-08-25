@@ -33,14 +33,14 @@ namespace Game
 
         }
 
-        private static void LoadAssetAtAB(AssetInfo assetInfo, AssetBundle ab, Action<UnityEngine.Object> callBack)
+        public static void LoadAssetAtAB(AssetInfo assetInfo, AssetBundle ab, Action<UnityEngine.Object> callBack)
         {
             if (null == ab)
             {
                 AssertCallBack(null, callBack, "AssetBundle Error");
                 return;
             }
-            CoroutineLoadAtAB(assetInfo, ab, callBack);
+            GameMain.Coroutine(CoroutineLoadAtAB(assetInfo, ab, callBack));
         }
 
         private static IEnumerator CoroutineLoadUseWWW(AssetInfo assetInfo, Action<UnityEngine.Object> callBack)
@@ -77,7 +77,7 @@ namespace Game
             AssertCallBack(ab, callBack, "LoadFromFileAsync.assetBundle nil " + assetInfo.assetPath);
         }
 
-        private static IEnumerable CoroutineLoadAtAB(AssetInfo assetInfo, AssetBundle ab, Action<UnityEngine.Object> callBack)
+        private static IEnumerator CoroutineLoadAtAB(AssetInfo assetInfo, AssetBundle ab, Action<UnityEngine.Object> callBack)
         {
             AssetBundleRequest req = null;
             if (assetInfo.assetType != AssetType.sprite)

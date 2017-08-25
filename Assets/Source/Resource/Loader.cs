@@ -24,7 +24,7 @@ public class Loader
         return m_AllDependency; 
     }
 
-    public static void LoadUI(string uiPath)
+    public static void LoadUI(string uiPath,System.Action<GameObject> callBack)
     {
         if (m_Objs.ContainsKey(uiPath))
             return;
@@ -35,6 +35,10 @@ public class Loader
             GameObject newObj =(GameObject) Object.Instantiate(ab.LoadAllAssets()[0]);
             Attachment.Create(newObj, assetInfo);
             m_Objs.Add(uiPath, newObj);
+            if(null != callBack)
+            {
+                callBack(newObj);
+            }
         });
     }
 
@@ -49,7 +53,7 @@ public class Loader
 
     //Test
     public static Dictionary<string, GameObject> m_Objs = new Dictionary<string, GameObject>();
-    private static AssetInfo CreateAssetInfo(string assetPath)
+    public static AssetInfo CreateAssetInfo(string assetPath)
     {
         AssetInfo assetInfo = new AssetInfo();
         assetInfo.assetPath = ApplicationPath.GetPath(assetPath);

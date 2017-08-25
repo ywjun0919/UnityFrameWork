@@ -7,7 +7,7 @@ public class Attachment : MonoBehaviour
 {
 
     private AssetInfo assetInfo = null;
-
+    
     internal static void Create(GameObject obj, AssetInfo assetInfo)
     {
         var behaviour = obj.AddComponent<Attachment>();
@@ -21,4 +21,6 @@ public class Attachment : MonoBehaviour
             Resource.Free(assetInfo);
         }
     }
+
+    
 }
