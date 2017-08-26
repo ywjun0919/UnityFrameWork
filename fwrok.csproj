@@ -80,6 +80,7 @@
     <Compile Include="Assets\Source\Resource\Attachment.cs" />
     <Compile Include="Assets\Source\Resource\Cache.cs" />
     <Compile Include="Assets\Source\Resource\Loader.cs" />
+    <Compile Include="Assets\Source\Resource\Pool.cs" />
     <Compile Include="Assets\Source\Resource\Resource.cs" />
     <Compile Include="Assets\Source\UIExtend\UISprite.cs" />
     <Compile Include="Assets\Tools\Simple Sprite Packer\Scripts\SPAction.cs" />
