@@ -10,6 +10,7 @@ namespace SimpleSpritePackerEditor
 	public class SPInstanceEditor : Editor {
 		
 		private SPInstance m_SPInstance;
+        
 		private SPAtlasBuilder m_AtlasBuilder;
 		
 		private static Color green = new Color(0.345f, 0.625f, 0.370f, 1f);
@@ -545,10 +546,16 @@ namespace SimpleSpritePackerEditor
 				// Set the texture reff in the sprite packer instance
 				asset.texture = AssetDatabase.LoadAssetAtPath(texturePath, typeof(Texture2D)) as Texture2D;
 			}
-			
-			// Focus on the new sprite packer
-			EditorUtility.FocusProjectWindow();
+
+            var objs = Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.DeepAssets);
+            
+            if (objs.Length > 0)
+                asset.QueueAction_AddSprites(objs);
+            
+            // Focus on the new sprite packer
+            EditorUtility.FocusProjectWindow();
 			Selection.activeObject = asset;
+           
 		}
 	}
 }

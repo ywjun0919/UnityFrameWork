@@ -15,7 +15,7 @@ public partial class ResourceExporter
 	};
     static string[] m_AtlasAssetFolder = new string[]
     {
-        "ui/atlas/common",
+        "ui/atlas/",
     };
 
     static Dictionary<string, string> m_atlas = new Dictionary<string, string>();
@@ -35,15 +35,8 @@ public partial class ResourceExporter
         m_assetAtlas.Clear();
         foreach (var folder in m_AtlasAssetFolder)
         {
-            Dictionary<string, string> temp = new Dictionary<string, string>();
-            GetAssetsRecursively(GameSetting.assetPath + folder, "*.png", "ui/atlas/", null, "ui", ref temp);
-            Dictionary<string, string> temp1 = new Dictionary<string, string>();
-            foreach (var pair in temp)
-            {
-                temp1.Add(pair.Key,folder+".ui");
-            }
-            m_assetAtlas.AddRange(temp1);
-           // GetAssetsRecursively(folder, "*.asset", "ui/atlas/", null, "ui", ref m_assetAtlas);
+            GetAssetsRecursively(GameSetting.assetPath + folder, "*.png", "ui/atlas/", null, "ui", ref m_assetAtlas);
+            GetAssetsRecursively(folder, "*.asset", "ui/atlas/", null, "ui", ref m_assetAtlas);
         }
     }
 

@@ -86,10 +86,20 @@ namespace Game
             }
             else
             {
-                req = ab.LoadAssetAsync<UnityEngine.Sprite>(assetInfo.assetPath);
+                req = ab.LoadAllAssetsAsync<UnityEngine.Sprite>(); //ab.LoadAssetAsync<UnityEngine.Sprite>(assetInfo.assetPath);
             }
             yield return req;
             var asset = req.asset;
+            if(assetInfo.assetType == AssetType.sprite)
+            {
+                foreach(var a in req.allAssets)
+                {
+                    if(a.name == assetInfo.assetPath)
+                    {
+                        asset = a;
+                    }
+                }
+            }
             AssertCallBack(asset, callBack, "LoadAssetAsync err  " + assetInfo.assetPath);
         }
 
