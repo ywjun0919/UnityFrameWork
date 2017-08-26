@@ -47,7 +47,6 @@ namespace UnityEngine.UI
 
         private void OnSpriteLoadFinished(Object obj,AssetInfo altasAssetInfo)
         {
-            Debug.Log("SetSprite 3");
             FreeAltasRef();
             if (null != obj && obj is Sprite)
             {

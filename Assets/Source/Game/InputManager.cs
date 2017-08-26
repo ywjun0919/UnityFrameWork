@@ -16,13 +16,13 @@ namespace Game
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.C))
+            if (Input.GetKey(KeyCode.D))
             {
                 Loader.Destory("ui/dlgtest.ui");
             }
             else if (Input.GetKey(KeyCode.O))
             {
-                Loader.LoadUI("ui/dlgtest.ui", null);
+                Loader.LoadUI("ui/dlgtest.ui", (obj)=> { TestUI.Instance.uiObj = obj; });
             }
             else if (Input.GetKey(KeyCode.U))
             {
@@ -39,6 +39,10 @@ namespace Game
             else if (Input.GetKey(KeyCode.T))
             {
                 TestUI.Instance.SetTexture("1");
+            }
+            else if(Input.GetKey(KeyCode.C))
+            {
+                Cache.GetOrCreateCache("T");
             }
         }
 
