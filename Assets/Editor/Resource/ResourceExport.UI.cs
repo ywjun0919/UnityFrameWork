@@ -2,12 +2,14 @@
 using UnityEditor;
 using Game;
 using UnityEngine;
+using System.IO;
 
 public partial class ResourceExporter
 {
     static string m_UIsPath = GameSetting.assetPath + "ui/Prefabs";
     static Dictionary<string, string> m_assetUIs = new Dictionary<string, string>();
     static Dictionary<string, string> m_assetAtlas = new Dictionary<string, string>();
+    static Dictionary<string, string> m_picInUIRedundancy = new Dictionary<string, string>();
 
     static string[] m_FontAssetFolder = new string[]
 	{
@@ -39,9 +41,49 @@ public partial class ResourceExporter
             GetAssetsRecursively(folder, "*.asset", "ui/atlas/", null, "ui", ref m_assetAtlas);
         }
     }
+    static void GetRedundancyPicInUI(Dictionary<string, string> assets)
+    {
+        GetTexturesAssets(); //获取UI贴图
+        HashSet<string> allPicSet = new HashSet<string>();
+        string[] depFormats = { ".png", "tga" };
+        foreach (KeyValuePair<string, string> pair in assets)
+        {
+            string[] dependencies = AssetDatabase.GetDependencies(pair.Key);
+            foreach (string sdep in dependencies)
+            {
+                string dep = sdep.ToLower();
+                if (m_assetAtlas.ContainsKey(dep)) { continue; }
+                if (m_assetTextures.ContainsKey(dep))
+                {
+                    m_picInUIRedundancy[dep] = m_assetTextures[dep];
+                    continue;
+                }
+                foreach (string format in depFormats)
+                {
+                    if (dep.EndsWith(format))
+                    {
+                        string newName;
+                        newName = string.Format("{0}{1}.bundle", "deptexture/t_", Path.GetFileNameWithoutExtension(dep));
+                        newName = newName.Replace(" ", "");
+                        newName = newName.ToLower();
 
+                        if (allPicSet.Contains(dep))
+                        {
+                            m_picInUIRedundancy[dep] = newName;
+                        }
+                        else
+                        {
+                            allPicSet.Add(dep);
+                        }
+                    }
+                }
+            }
+        }
 
-        static Dictionary<string, string> GetSelectedAssets(Dictionary<string, string> allassets, UnityEngine.Object[] selection)
+      
+    }
+
+    static Dictionary<string, string> GetSelectedAssets(Dictionary<string, string> allassets, UnityEngine.Object[] selection)
     {
         Dictionary<string, string> assets = new Dictionary<string, string>();
         for (int i = 0; i < selection.Length; ++i)
@@ -85,7 +127,7 @@ public partial class ResourceExporter
         //PreProcessAtlas(target);
         //SetAssetBundleName(assets, new string[] { ".shader" }, "shaders/");
 		GetUIAssets();
-
+        GetRedundancyPicInUI(assets);
         SetAssetBundleName(assets);
         BuildAssetBundles(target);
         //PostProcessAtlas(target);

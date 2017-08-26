@@ -82,7 +82,9 @@
     <Compile Include="Assets\Source\Resource\Loader.cs" />
     <Compile Include="Assets\Source\Resource\Pool.cs" />
     <Compile Include="Assets\Source\Resource\Resource.cs" />
+    <Compile Include="Assets\Source\TestUI.cs" />
     <Compile Include="Assets\Source\UIExtend\UISprite.cs" />
+    <Compile Include="Assets\Source\UIExtend\UITexture.cs" />
     <Compile Include="Assets\Tools\Simple Sprite Packer\Scripts\SPAction.cs" />
     <Compile Include="Assets\Tools\Simple Sprite Packer\Scripts\SPActionType.cs" />
     <Compile Include="Assets\Tools\Simple Sprite Packer\Scripts\SPInstance.cs" />

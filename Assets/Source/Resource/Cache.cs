@@ -150,5 +150,17 @@ namespace Game
                 }
             }
         }
+
+        public int GetRefCnt(AssetInfo assetInfo)
+        {
+            CacheInfo cacheInfo = null;
+            string assetPath = assetInfo.assetPath;
+            m_Loaded.TryGetValue(assetInfo.assetPath, out cacheInfo);
+            if (null != cacheInfo)
+            {
+                return cacheInfo.refcnt;
+            }
+            return 0;
+        }
     }
 }

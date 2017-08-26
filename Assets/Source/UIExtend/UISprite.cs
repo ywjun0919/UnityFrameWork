@@ -9,23 +9,24 @@ namespace UnityEngine.UI
         private AssetInfo m_AssetInfo = new AssetInfo();
         private AssetInfo m_AltasAssetInfo = null;
 
+        private bool bLoading = false;
         public void SetSprite(string spriteName,AssetInfo altasAssetInfo)
         {
             if(spriteName == m_AssetInfo.assetPath)
             {
                 return;
             }
-            if(spriteName == string.Empty)
+
+            if (spriteName == string.Empty)
             {
-                FreeAltasRef();
-                this.sprite = null;
+                RelaseSprite();
                 return;
             }
             m_AssetInfo.assetPath = spriteName;
             m_AssetInfo.assetType = AssetType.sprite;
             m_AssetInfo.locationType = AssetLocation.Local;
             m_AssetInfo.RefCachePolicy = null;
-
+            bLoading = true;
             Resource.Load(altasAssetInfo, (ab) =>
             {
                 Resource.LoadAssetAtAB(m_AssetInfo, (AssetBundle)ab,(obj)=> {
@@ -34,24 +35,30 @@ namespace UnityEngine.UI
             });
         }
 
+        private void RelaseSprite()
+        {
+            if(null != this.sprite)
+            {
+                FreeAltasRef();
+                this.sprite = null;
+                this.m_AltasAssetInfo = null;
+            }
+        }
+
         private void OnSpriteLoadFinished(Object obj,AssetInfo altasAssetInfo)
         {
-           
-            if(null != obj && obj is Sprite)
+            Debug.Log("SetSprite 3");
+            FreeAltasRef();
+            if (null != obj && obj is Sprite)
             {
                 this.sprite = obj as Sprite;
-               
-                if ( null != m_AltasAssetInfo && m_AltasAssetInfo.assetPath != altasAssetInfo.assetPath)
-                {
-                    FreeAltasRef();
-                }
                 m_AltasAssetInfo = altasAssetInfo;
             }
             else
             {
-                Resource.Free(altasAssetInfo);
                 Debug.LogError("Sprite Not Exist");
             }
+            
         }
         protected override void OnDestroy()
         {

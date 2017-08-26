@@ -22,15 +22,23 @@ namespace Game
             }
             else if (Input.GetKey(KeyCode.O))
             {
-                Loader.LoadUI("ui/dlgtest.ui",null);
+                Loader.LoadUI("ui/dlgtest.ui", null);
             }
-            else if(Input.GetKey(KeyCode.U))
+            else if (Input.GetKey(KeyCode.U))
             {
-                GameMain.SetSprite("google");
+                TestUI.Instance.SetSprite("google");
             }
-            else if(Input.GetKey(KeyCode.I))
+            else if (Input.GetKey(KeyCode.E))
             {
-                GameMain.SetSprite("1_cjsen");
+                TestUI.Instance.SetSprite("");
+            }
+            else if (Input.GetKey(KeyCode.I))
+            {
+                TestUI.Instance.SetSprite("1_cjsen");
+            }
+            else if (Input.GetKey(KeyCode.T))
+            {
+                TestUI.Instance.SetTexture("1");
             }
         }
 
